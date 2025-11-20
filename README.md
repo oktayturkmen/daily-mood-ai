@@ -11,7 +11,7 @@ React Native CLI ile geliştirilmiş, kullanıcıların günlük duygularını v
 - [📁 Proje Yapısı](#-proje-yapısı)
 - [🤖 AI Modeli & API Servisi](#-ai-modeli--api-servisi)
 - [📊 Veri Modeli](#-veri-modeli)
-- [🧪 Test & 🐛 Sorun Giderme](#-test-etme--🐛-sorun-giderme)
+- [🧪 Test ](#-test-etme--🐛-sorun-giderme)
 - [Ek Bilgiler](#ek-bilgiler)
 
 ## 📱 Özellikler
@@ -59,15 +59,9 @@ React Native CLI ile geliştirilmiş, kullanıcıların günlük duygularını v
 ### 1. Depoyu İndirin
 ```bash
 git clone <repository-url>
-cd daily-mood-al
 ```
 
-### 2. Bağımlılıkları Kurun
-```bash
-yarn install
-```
-
-### 3. .env ve API Key
+### 2. .env ve API Key
 1. https://aistudio.google.com/app/apikey üzerinden Google Gemini API key alın
 2. Proje kökünde `.env` dosyası oluşturun ve ekleyin:
    ```env
@@ -76,6 +70,11 @@ yarn install
 3. `.env` dosyası `.gitignore` içinde tutulduğu için repoya gönderilmez. `.env.example` yoksa aynı formatta kendiniz oluşturabilirsiniz.
 
 > API key eklenmezse uygulama fallback analizleriyle çalışmaya devam eder.
+
+### 3. Bağımlılıkları Kurun
+```bash
+yarn install
+```
 
 ### 4. Metro Bundler'ı Başlatın
 ```bash
@@ -218,7 +217,7 @@ Uygulama **Context API** ile global state yönetimi kullanır:
 
 Detaylı mimari bilgisi için `ARCHITECTURE.md` dosyasına bakın.
 
-## 🧪 Test Etme & 🐛 Sorun Giderme
+## 🧪 Test Etme 
 
 **Hızlı Senaryo**
 1. `yarn start`
@@ -226,11 +225,7 @@ Detaylı mimari bilgisi için `ARCHITECTURE.md` dosyasına bakın.
 3. Günlük giriş ekleyip “Analiz Et” butonuna basın
 4. `History` sekmesinde kaydı doğrulayın
 
-**Sık Sorular**
-- **Metro açılmıyor:** `yarn start --reset-cache`
-- **Android build hatası:** Android Studio'da SDK + NDK kurulu mu, `android/gradle.properties` güncel mi kontrol edin
-- **iOS pod problemi:** `cd ios && pod install && cd ..`
-- **API key hatası:** Key `AIzaSy` ile başlamalı; boşsa fallback çalışır fakat Gemini yanıtı alınmaz
+
 
 ## 📄 Lisans
 
@@ -252,17 +247,7 @@ Bu proje eğitim amaçlı geliştirilmiştir.
 
 </details>
 
-<details>
-<summary><strong>🔮 Gelecek Özellikler</strong></summary>
 
-- [ ] İstatistikler ve grafikler  
-- [ ] Arama ve filtreleme  
-- [ ] Export/Import özelliği  
-- [ ] Bildirimler  
-- [ ] Çoklu dil desteği  
-- [ ] .env dosyası ile API key yönetimi  
-
-</details>
 
 ---
 
