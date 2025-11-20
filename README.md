@@ -38,7 +38,7 @@ React Native CLI ile geliştirilmiş, kullanıcıların günlük duygularını v
 
 ## 🎥 Demo
 
-- [Uygulama ekran kaydı (Google Drive)](https://drive.google.com/file/d/1JBQtspMQMhrRZDkNpOD-wXy-NostazhG/view?t=9)
+- [Uygulama ekran kaydı (Google Drive)](https://drive.google.com/file/d/1uMzjLaDTY5jLN0zkZOZ349DtF8prbm7T/view?t=65)
 
 ## 📋 Gereksinimler
 
