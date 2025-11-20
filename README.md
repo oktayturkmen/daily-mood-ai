@@ -249,7 +249,6 @@ Bu proje eğitim amaçlı geliştirilmiştir.
 - ✅ AI servisi (Gemini API + Fallback)  
 - ✅ UI/UX iyileştirmeleri  
 
-> README’nin “Kurulum & Çalıştırma” ile “AI Modeli & API Servisi” bölümleri Cursor üzerinden GPT-5.1 Codex yardımıyla düzenlenmiştir; diğer kod ve içerikler manuel olarak hazırlanmıştır.
 
 </details>
 
@@ -267,5 +266,6 @@ Bu proje eğitim amaçlı geliştirilmiştir.
 
 ---
 
-**Not:** Bu uygulama React Native CLI ile geliştirilmiştir. Expo projesi değildir.  
+**Not:** Bu uygulama React Native CLI ile geliştirilmiştir. Expo projesi değildir. 
+**Not:** README’nin “Kurulum & Çalıştırma” ile “AI Modeli & API Servisi” bölümleri Cursor üzerinden GPT-5.1 Codex yardımıyla düzenlenmiştir; diğer kod ve içerikler manuel olarak hazırlanmıştır.
 **Önemli:** API key olmadan da uygulama çalışır; fallback mekanizması yerel sentiment analizi kullanır.
