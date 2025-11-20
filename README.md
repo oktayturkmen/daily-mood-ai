@@ -11,7 +11,7 @@ React Native CLI ile geliştirilmiş, kullanıcıların günlük duygularını v
 - [📁 Proje Yapısı](#-proje-yapısı)
 - [🤖 AI Modeli & API Servisi](#-ai-modeli--api-servisi)
 - [📊 Veri Modeli](#-veri-modeli)
-- [🧪 Test ](#-test-etme--🐛-sorun-giderme)
+- [🧪 Test ](#-test-etme)
 - [Ek Bilgiler](#ek-bilgiler)
 
 ## 📱 Özellikler
