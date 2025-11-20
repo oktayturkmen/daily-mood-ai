@@ -1,97 +1,271 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# DailyMoodAI
 
-# Getting Started
+React Native CLI ile geliştirilmiş, kullanıcıların günlük duygularını ve düşüncelerini AI ile analiz eden bir mobil uygulama.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## İçindekiler
+- [📱 Özellikler](#-özellikler)
+- [🛠️ Teknolojiler](#%EF%B8%8F-teknolojiler)
+- [🎥 Demo](#-demo)
+- [📋 Gereksinimler](#-gereksinimler)
+- [🚀 Kurulum & Çalıştırma](#-kurulum--çalıştırma)
+- [📁 Proje Yapısı](#-proje-yapısı)
+- [🤖 AI Modeli & API Servisi](#-ai-modeli--api-servisi)
+- [📊 Veri Modeli](#-veri-modeli)
+- [🧪 Test & 🐛 Sorun Giderme](#-test-etme--🐛-sorun-giderme)
+- [Ek Bilgiler](#ek-bilgiler)
 
-## Step 1: Start Metro
+## 📱 Özellikler
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- **Günlük Giriş**: Her gün kısa bir cümle veya mood yazın
+- **AI Analizi**: Metinleriniz otomatik olarak analiz edilir:
+  - Duygu analizi (Pozitif / Nötr / Negatif)
+  - Kısa özet
+  - Kişiselleştirilmiş öneriler
+- **Geçmiş Takibi**: Tüm girişlerinizi görüntüleyin
+- **Haftalık Özet**: Son 7 günün duygu dağılımını görün
+- **Offline Çalışma**: Geçmiş verileriniz internet olmadan da görüntülenebilir
+- **Lokal Depolama**: Tüm verileriniz cihazınızda güvenle saklanır
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## 🛠️ Teknolojiler
 
-```sh
-# Using npm
-npm start
+- **React Native CLI** (JavaScript)
+- **React Navigation** - Ekran geçişleri
+- **Context API** - Global state yönetimi
+- **AsyncStorage** - Lokal veri depolama
+- **React Native Paper** - UI bileşenleri
+- **Google Gemini API** - Sentiment analizi (ücretsiz endpoint, API key gerekli)
+- **Hugging Face API** - Fallback sentiment analizi (ücretsiz endpoint)
 
-# OR using Yarn
+## 🎥 Demo
+
+- [Uygulama ekran kaydı (Google Drive)](https://drive.google.com/file/d/1JBQtspMQMhrRZDkNpOD-wXy-NostazhG/view?t=9)
+
+## 📋 Gereksinimler
+
+- Node.js >= 20.19.4
+- React Native CLI
+- Android Studio (Android için)
+- Xcode (iOS için, sadece Mac)
+
+## 🚀 Kurulum & Çalıştırma
+
+### 0. Ortamı Hazırlayın
+- [Node.js](https://nodejs.org/) ≥ 20.19.4
+- Yarn (global)
+- Android Studio + en az bir cihaz/emülatör, Android SDK 34, JDK 17
+- (Opsiyonel) Watchman ve Java 17 ayarlı olması build sürelerini iyileştirir
+- iOS (sadece macOS): Xcode 15+, CocoaPods (`sudo gem install cocoapods`)
+
+### 1. Depoyu İndirin
+```bash
+git clone <repository-url>
+cd daily-mood-al
+```
+
+### 2. Bağımlılıkları Kurun
+```bash
+yarn install
+```
+
+### 3. .env ve API Key
+1. https://aistudio.google.com/app/apikey üzerinden Google Gemini API key alın
+2. Proje kökünde `.env` dosyası oluşturun ve ekleyin:
+   ```env
+   GEMINI_API_KEY=AIzaSy... # kendi anahtarınız
+   ```
+3. `.env` dosyası `.gitignore` içinde tutulduğu için repoya gönderilmez. `.env.example` yoksa aynı formatta kendiniz oluşturabilirsiniz.
+
+> API key eklenmezse uygulama fallback analizleriyle çalışmaya devam eder.
+
+### 4. Metro Bundler'ı Başlatın
+```bash
 yarn start
 ```
+Gerekirse `yarn start --reset-cache` komutuyla cache temizlenebilir.
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
+### 5. Android'de Çalıştırın
+```bash
 yarn android
 ```
+- Android emülatörünü önceden açın veya USB ile fiziksel cihaz bağlayın  
+- Metro ile bağlantı sorunu yaşarsanız `adb reverse tcp:8081 tcp:8081` çalıştırın
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
+### 6. iOS'ta Çalıştırın (Mac)
+```bash
+cd ios
+pod install
+cd ..
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### 7. Hızlı Test
+1. `yarn start` ve `yarn android/ios` oturumlarını açık tutun  
+2. Daily Entry ekranında test bir metin yazıp “Analiz Et” butonuna basın  
+3. `History` sekmesinde kaydın göründüğünü kontrol edin  
+4. Debug menüsünden (`Ctrl+M`/`Cmd+D`) gerekirse cache temizleyin veya `Reload` seçin
 
-## Step 3: Modify your app
+## 📁 Proje Yapısı
 
-Now that you have successfully run the app, let's make changes!
+```
+DailyMoodAI/
+├── src/
+│   ├── components/          # Yeniden kullanılabilir bileşenler
+│   │   ├── EntryCard.js
+│   │   └── SentimentBadge.js
+│   ├── constants/          # Sabitler
+│   │   └── colors.js
+│   ├── context/            # Context API
+│   │   └── JournalContext.js
+│   ├── hooks/              # Custom hooks
+│   │   └── useJournal.js
+│   ├── navigation/        # Navigasyon
+│   │   └── RootNavigator.js
+│   ├── screens/           # Ekranlar
+│   │   ├── DailyEntryScreen.js
+│   │   └── HistoryScreen.js
+│   ├── services/          # Servisler
+│   │   ├── aiService.js
+│   │   └── storageService.js
+│   └── utils/             # Yardımcı fonksiyonlar
+│       └── sentimentUtils.js
+├── App.tsx                # Ana uygulama dosyası
+└── package.json
+```
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## 🤖 AI Modeli & API Servisi
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+AI katmanı üç seviyeden oluşur:
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+1. **Gemini Generative Language API (Google)**  
+   - Modeller: `gemini-2.0-flash` (v1beta), ardından `gemini-pro`, `gemini-1.5-flash`, `gemini-1.5-pro` (v1)  
+   - İstekler `https://generativelanguage.googleapis.com/{version}/models/<model>:generateContent` uçlarına POST edilir  
+   - Header: `X-goog-api-key: <GEMINI_API_KEY>` (dotenv ile aktarılır)  
+   - Yanıtlar JSON olarak parse edilir; model 403/404/429 dönerse sıradaki modele geçilir
 
-## Congratulations! :tada:
+2. **Hugging Face Inference API (Fallback 1)**  
+   - Modeller: `cardiffnlp/twitter-roberta-base-sentiment-latest`, `distilbert-base-uncased-finetuned-sst-2-english`  
+   - Kimlik doğrulama gerekmez; ücretsiz endpoint'ler kullanılır  
+   - Dönen skorlar sıralanır ve en yüksek olasılıklı sentiment seçilir
 
-You've successfully run and modified your React Native App. :partying_face:
+3. **Yerel Heuristik Analiz (Fallback 2)**  
+   - Pozitif/negatif Türkçe-İngilizce anahtar kelimeler  
+   - Özet ve öneri metinleri lokalde üretilir  
+   - İnternet veya API key olmadığında bile girişlerin analiz edilmesini sağlar
 
-### Now what?
+### API Key Yönetimi
+- `.env` → `GEMINI_API_KEY=AIzaSy...`  
+- Build sırasında `babel-plugin-inline-dotenv` ile JS tarafına enjekte edilir  
+- `.env` git'e gönderilmez, sadece `.env.example` paylaşılırsa format rehberi olur  
+- Key'i döngüsel olarak yenileyip Google Cloud konsolundan kotaları izleyebilirsiniz
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+### Yanıt Formatı
+Gemini'den beklenen yanıt:
+```json
+{
+  "sentiment": "positive | neutral | negative",
+  "summary": "≤50 kelimelik özet",
+  "suggestion": "Türkçe kişisel öneri"
+}
+```
+Bu alanlar UI'da sırasıyla rozet rengi, kart özeti ve öneri bileşenlerinde kullanılır.
 
-# Troubleshooting
+### Güvenlik ve Gizlilik
+- Günlük metinleri yalnızca seçilen API'ye gönderilir, sunucuda saklanmaz  
+- Cihazdaki veriler `AsyncStorage` içinde `JOURNAL_ENTRIES` anahtarı altında tutulur  
+- Tam sıfırlama için debug konsolunda `await AsyncStorage.clear()` çalıştırabilirsiniz
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## 📊 Veri Modeli
 
-# Learn More
+Her günlük girişi şu yapıda saklanır:
 
-To learn more about React Native, take a look at the following resources:
+```javascript
+{
+  id: string,              // Benzersiz ID
+  text: string,            // Kullanıcının yazdığı metin
+  date: string,            // ISO tarih formatı
+  sentiment: "positive" | "neutral" | "negative",
+  summary: string,         // AI tarafından oluşturulan özet
+  suggestion: string       // AI tarafından önerilen mesaj
+}
+```
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## 🔒 Offline Çalışma
+
+- Tüm veriler **AsyncStorage** ile cihazda saklanır
+- Yeni analiz için internet gerekir (API key varsa)
+- Geçmiş veriler internet olmadan görüntülenebilir
+- Veriler cihazda kalıcı olarak saklanır
+
+## 🎨 UI/UX
+
+- **Karanlık Tema**: Göz yormayan karanlık arayüz
+- **Sentiment Renkleri**: Her duygu durumu için özel renkler
+  - Pozitif: 🟢 Yeşil
+  - Nötr: ⚪ Gri
+  - Negatif: 🔴 Kırmızı
+- **Dinamik Arka Plan**: Son girişin sentiment'ine göre arka plan rengi değişir
+- **Modern Tasarım**: React Native Paper ile modern ve kullanıcı dostu arayüz
+
+## 📝 Mimari
+
+Uygulama **Context API** ile global state yönetimi kullanır:
+
+- `JournalContext`: Tüm entry'leri ve işlemleri yönetir
+- `useJournal()`: Context'i kullanmak için custom hook
+- `storageService`: AsyncStorage işlemleri
+- `aiService`: AI analiz işlemleri (Gemini API + Fallback)
+
+Detaylı mimari bilgisi için `ARCHITECTURE.md` dosyasına bakın.
+
+## 🧪 Test Etme & 🐛 Sorun Giderme
+
+**Hızlı Senaryo**
+1. `yarn start`
+2. `yarn android` veya `yarn ios`
+3. Günlük giriş ekleyip “Analiz Et” butonuna basın
+4. `History` sekmesinde kaydı doğrulayın
+
+**Sık Sorular**
+- **Metro açılmıyor:** `yarn start --reset-cache`
+- **Android build hatası:** Android Studio'da SDK + NDK kurulu mu, `android/gradle.properties` güncel mi kontrol edin
+- **iOS pod problemi:** `cd ios && pod install && cd ..`
+- **API key hatası:** Key `AIzaSy` ile başlamalı; boşsa fallback çalışır fakat Gemini yanıtı alınmaz
+
+## 📄 Lisans
+
+Bu proje eğitim amaçlı geliştirilmiştir.
+
+## Ek Bilgiler
+
+<details>
+<summary><strong>👨‍💻 Geliştirme Günlüğü</strong></summary>
+
+- ✅ Proje kurulumu  
+- ✅ Proje yapısı  
+- ✅ Navigation  
+- ✅ Context ve State yönetimi  
+- ✅ Lokal depolama  
+- ✅ AI servisi (Gemini API + Fallback)  
+- ✅ UI/UX iyileştirmeleri  
+
+> README’nin “Kurulum & Çalıştırma” ile “AI Modeli & API Servisi” bölümleri Cursor üzerinden GPT-5.1 Codex yardımıyla düzenlenmiştir; diğer kod ve içerikler manuel olarak hazırlanmıştır.
+
+</details>
+
+<details>
+<summary><strong>🔮 Gelecek Özellikler</strong></summary>
+
+- [ ] İstatistikler ve grafikler  
+- [ ] Arama ve filtreleme  
+- [ ] Export/Import özelliği  
+- [ ] Bildirimler  
+- [ ] Çoklu dil desteği  
+- [ ] .env dosyası ile API key yönetimi  
+
+</details>
+
+---
+
+**Not:** Bu uygulama React Native CLI ile geliştirilmiştir. Expo projesi değildir.  
+**Önemli:** API key olmadan da uygulama çalışır; fallback mekanizması yerel sentiment analizi kullanır.
