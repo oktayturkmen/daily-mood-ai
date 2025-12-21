@@ -3,18 +3,18 @@
 React Native CLI ile geliştirilmiş, kullanıcıların günlük duygularını ve düşüncelerini AI ile analiz eden bir mobil uygulama.
 
 ## İçindekiler
-- [📱 Özellikler](#-özellikler)
-- [🛠️ Teknolojiler](#%EF%B8%8F-teknolojiler)
-- [🎥 Demo](#-demo)
-- [📋 Gereksinimler](#-gereksinimler)
-- [🚀 Kurulum & Çalıştırma](#-kurulum--çalıştırma)
-- [📁 Proje Yapısı](#-proje-yapısı)
-- [🤖 AI Modeli & API Servisi](#-ai-modeli--api-servisi)
-- [📊 Veri Modeli](#-veri-modeli)
-- [🧪 Test ](#-test-etme)
+- [ Özellikler](#-özellikler)
+- [ Teknolojiler](#%EF%B8%8F-teknolojiler)
+- [ Demo](#-demo)
+- [ Gereksinimler](#-gereksinimler)
+- [ Kurulum & Çalıştırma](#-kurulum--çalıştırma)
+- [ Proje Yapısı](#-proje-yapısı)
+- [ AI Modeli & API Servisi](#-ai-modeli--api-servisi)
+- [ Veri Modeli](#-veri-modeli)
+- [ Test ](#-test-etme)
 - [Ek Bilgiler](#ek-bilgiler)
 
-## 📱 Özellikler
+##  Özellikler
 
 - **Günlük Giriş**: Her gün kısa bir cümle veya mood yazın
 - **AI Analizi**: Metinleriniz otomatik olarak analiz edilir:
@@ -36,18 +36,18 @@ React Native CLI ile geliştirilmiş, kullanıcıların günlük duygularını v
 - **Google Gemini API** - Sentiment analizi (ücretsiz endpoint, API key gerekli)
 - **Hugging Face API** - Fallback sentiment analizi (ücretsiz endpoint)
 
-## 🎥 Demo
+##  Demo
 
-- [Uygulama ekran kaydı (Google Drive)](https://drive.google.com/file/d/1uMzjLaDTY5jLN0zkZOZ349DtF8prbm7T/view?t=65)
+- [Uygulama ekran kaydı (Google Drive)]()
 
-## 📋 Gereksinimler
+##  Gereksinimler
 
 - Node.js >= 20.19.4
 - React Native CLI
 - Android Studio (Android için)
 - Xcode (iOS için, sadece Mac)
 
-## 🚀 Kurulum & Çalıştırma
+##  Kurulum & Çalıştırma
 
 ### 0. Ortamı Hazırlayın
 - [Node.js](https://nodejs.org/) ≥ 20.19.4
@@ -104,7 +104,7 @@ yarn ios
 3. `History` sekmesinde kaydın göründüğünü kontrol edin  
 4. Debug menüsünden (`Ctrl+M`/`Cmd+D`) gerekirse cache temizleyin veya `Reload` seçin
 
-## 📁 Proje Yapısı
+##  Proje Yapısı
 
 ```
 DailyMoodAI/
@@ -132,7 +132,7 @@ DailyMoodAI/
 └── package.json
 ```
 
-## 🤖 AI Modeli & API Servisi
+##  AI Modeli & API Servisi
 
 AI katmanı üç seviyeden oluşur:
 
@@ -174,7 +174,7 @@ Bu alanlar UI'da sırasıyla rozet rengi, kart özeti ve öneri bileşenlerinde 
 - Cihazdaki veriler `AsyncStorage` içinde `JOURNAL_ENTRIES` anahtarı altında tutulur  
 - Tam sıfırlama için debug konsolunda `await AsyncStorage.clear()` çalıştırabilirsiniz
 
-## 📊 Veri Modeli
+##  Veri Modeli
 
 Her günlük girişi şu yapıda saklanır:
 
@@ -189,14 +189,14 @@ Her günlük girişi şu yapıda saklanır:
 }
 ```
 
-## 🔒 Offline Çalışma
+##  Offline Çalışma
 
 - Tüm veriler **AsyncStorage** ile cihazda saklanır
 - Yeni analiz için internet gerekir (API key varsa)
 - Geçmiş veriler internet olmadan görüntülenebilir
 - Veriler cihazda kalıcı olarak saklanır
 
-## 🎨 UI/UX
+##  UI/UX
 
 - **Karanlık Tema**: Göz yormayan karanlık arayüz
 - **Sentiment Renkleri**: Her duygu durumu için özel renkler
@@ -217,7 +217,7 @@ Uygulama **Context API** ile global state yönetimi kullanır:
 
 Detaylı mimari bilgisi için `ARCHITECTURE.md` dosyasına bakın.
 
-## 🧪 Test Etme 
+##  Test Etme 
 
 **Hızlı Senaryo**
 1. `yarn start`
@@ -234,7 +234,7 @@ Bu proje eğitim amaçlı geliştirilmiştir.
 ## Ek Bilgiler
 
 <details>
-<summary><strong>👨‍💻 Geliştirme Günlüğü</strong></summary>
+<summary><strong> Geliştirme Günlüğü</strong></summary>
 
 - ✅ Proje kurulumu  
 - ✅ Proje yapısı  
@@ -252,5 +252,4 @@ Bu proje eğitim amaçlı geliştirilmiştir.
 ---
 
 **Not:** Bu uygulama React Native CLI ile geliştirilmiştir. Expo projesi değildir. 
-**Not:** README’nin “Kurulum & Çalıştırma” ile “AI Modeli & API Servisi” bölümleri Cursor üzerinden GPT-5.1 Codex yardımıyla düzenlenmiştir; diğer kod ve içerikler manuel olarak hazırlanmıştır.
 **Önemli:** API key olmadan da uygulama çalışır; fallback mekanizması yerel sentiment analizi kullanır.
